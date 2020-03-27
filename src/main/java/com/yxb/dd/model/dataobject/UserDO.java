@@ -1,4 +1,4 @@
-package com.yxb.dd.model;
+package com.yxb.dd.model.dataobject;
 
 import java.math.BigInteger;
 import java.util.Date;
