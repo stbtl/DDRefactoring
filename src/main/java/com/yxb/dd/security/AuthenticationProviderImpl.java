@@ -25,12 +25,9 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         // 密码
         String password = authentication.getCredentials().toString();
 
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(username);
-        userDTO.setPassword(password);
-        accountService.getUser(userDTO);
+        UserDTO userDTO = accountService.getUserByNameAndPwd(username, password);
 
-        return new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDTO, username, authentication.getAuthorities());
     }
 
     @Override
