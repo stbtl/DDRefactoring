@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin() // 以下是对登录的设置
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .usernameParameter("txtUsername")
+                .usernameParameter("txtMail")
                 .passwordParameter("txtPassword")
                 .successForwardUrl("/index")
                 .failureUrl("/login?error=true").permitAll();

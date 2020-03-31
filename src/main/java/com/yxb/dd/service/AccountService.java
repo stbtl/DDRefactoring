@@ -13,9 +13,8 @@ public interface AccountService {
     /**
      * 获取用户信息
      *
-     * @param username 用户名
-     * @param password 密码
+     * @param mail 邮箱
      * @return 用户信息
      */
-    public UserDTO getUserByNameAndPwd(String username, String password);
+    public UserDTO getUserByMail(String mail);
 }

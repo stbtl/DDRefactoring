@@ -15,9 +15,8 @@ public interface AccountMapper {
     /**
      * 获取用户信息
      *
-     * @param username 用户名
-     * @param password 密码
+     * @param mail 邮箱
      * @return 用户信息
      */
-    UserDTO selectUserByNameAndPwd(String username, String password);
+    UserDTO selectUserByMail(String mail);
 }

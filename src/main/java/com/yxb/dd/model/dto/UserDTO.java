@@ -1,6 +1,7 @@
 package com.yxb.dd.model.dto;
 
 import java.math.BigInteger;
+import java.util.Date;
 
 /**
  * 用户DTO
@@ -24,6 +25,14 @@ public class UserDTO {
      */
     private String salt;
     /**
+     * 邮箱
+     */
+    private String mail;
+    /**
+     * 电话号码
+     */
+    private String tel;
+    /**
      * 用户权限ID
      */
     private BigInteger userRoleId;
@@ -35,6 +44,10 @@ public class UserDTO {
      * 是否锁定
      */
     private Boolean isLocked;
+    /**
+     * 变更日期
+     */
+    private Date gmtModified;
 
     public BigInteger getId() {
         return id;
@@ -68,6 +81,22 @@ public class UserDTO {
         this.salt = salt;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
     public BigInteger getUserRoleId() {
         return userRoleId;
     }
@@ -99,9 +128,12 @@ public class UserDTO {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", salt='" + salt + '\'' +
+                ", mail='" + mail + '\'' +
+                ", tel='" + tel + '\'' +
                 ", userRoleId=" + userRoleId +
                 ", pwdFailCount=" + pwdFailCount +
                 ", isLocked=" + isLocked +
+                ", gmtModified=" + gmtModified +
                 '}';
     }
 }

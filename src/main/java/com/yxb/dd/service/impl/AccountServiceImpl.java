@@ -18,8 +18,14 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountMapper accountMapper;
 
+    /**
+     * 获取用户信息
+     *
+     * @param mail 邮箱
+     * @return 用户信息
+     */
     @Override
-    public UserDTO getUserByNameAndPwd(String username, String password) {
-        return accountMapper.selectUserByNameAndPwd(username, password);
+    public UserDTO getUserByMail(String mail) {
+        return accountMapper.selectUserByMail(mail);
     }
 }
