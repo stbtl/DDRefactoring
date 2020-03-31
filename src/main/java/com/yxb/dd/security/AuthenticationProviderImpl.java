@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * 登录验证
+ *
+ * @author YingXB
+ * @date 2020/03/31 9:49
  */
 @Component
 public class AuthenticationProviderImpl implements AuthenticationProvider {

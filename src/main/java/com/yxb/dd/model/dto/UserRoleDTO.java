@@ -1,16 +1,20 @@
-package com.yxb.dd.model.dataobject;
+package com.yxb.dd.model.dto;
 
 import java.math.BigInteger;
 import java.util.Date;
 
 /**
- * 用户权限DO
- * DO：Data Object，与数据库完全对应
+ * 用户权限DTO
+ *
+ * @author YingXB
+ * @date 2020/03/31 9:49
  */
-public class UserRoleDO {
+public class UserRoleDTO {
 
     private BigInteger id;
-    // 权限名称
+    /**
+     * 权限名称
+     */
     private String roleName;
     private Date gmtCreate;
     private Date gmtModified;
@@ -45,5 +49,15 @@ public class UserRoleDO {
 
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRoleDTO{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                '}';
     }
 }

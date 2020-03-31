@@ -2,20 +2,38 @@ package com.yxb.dd.model.dto;
 
 import java.math.BigInteger;
 
+/**
+ * 用户DTO
+ *
+ * @author YingXB
+ * @date 2020/03/31 9:49
+ */
 public class UserDTO {
 
     private BigInteger id;
-    // 用户名
+    /**
+     * 用户名
+     */
     private String username;
-    // 密码(加密后)
+    /**
+     * 密码(加密后)
+     */
     private String password;
-    // 盐值(key)
+    /**
+     * 盐值(key)
+     */
     private String salt;
-    // 用户权限ID
+    /**
+     * 用户权限ID
+     */
     private BigInteger userRoleId;
-    // 密码输入错误次数
+    /**
+     * 密码输入错误次数
+     */
     private Byte pwdFailCount;
-    // 是否锁定
+    /**
+     * 是否锁定
+     */
     private Boolean isLocked;
 
     public BigInteger getId() {
@@ -72,5 +90,18 @@ public class UserDTO {
 
     public void setLocked(Boolean locked) {
         isLocked = locked;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", userRoleId=" + userRoleId +
+                ", pwdFailCount=" + pwdFailCount +
+                ", isLocked=" + isLocked +
+                '}';
     }
 }
