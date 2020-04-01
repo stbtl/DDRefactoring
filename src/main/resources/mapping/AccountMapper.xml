@@ -9,9 +9,21 @@
                 salt,
                 user_role_id as userRoleId,
                 mail,
-                tel
+                tel,
+                pwd_fail_count as pwdFailCount,
+                is_locked as locked
         FROM user
-        where mail = #{mail}
+        WHERE mail = #{mail}
     </select>
+
+    <update id="updateUserById" parameterType="com.yxb.dd.model.dto.UserDTO">
+        UPDATE user
+        SET user_name = #{username},
+            password = #{password},
+            user_role_id = #{userRoleId},
+            pwd_fail_count = #{pwdFailCount},
+            is_locked = #{locked}
+        WHERE id = #{id}
+    </update>
 
 </mapper>

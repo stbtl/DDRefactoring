@@ -10,11 +10,5 @@ import com.yxb.dd.model.dto.UserDTO;
  */
 public interface AccountService {
 
-    /**
-     * 获取用户信息
-     *
-     * @param mail 邮箱
-     * @return 用户信息
-     */
-    public UserDTO getUserByMail(String mail);
+
 }

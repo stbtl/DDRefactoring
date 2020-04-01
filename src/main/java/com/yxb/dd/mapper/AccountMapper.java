@@ -19,4 +19,12 @@ public interface AccountMapper {
      * @return 用户信息
      */
     UserDTO selectUserByMail(String mail);
+
+    /**
+     * 更新用户信息
+     *
+     * @param userDTO 用户信息
+     * @return 更新件数
+     */
+    int updateUserById(UserDTO userDTO);
 }
