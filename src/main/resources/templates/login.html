@@ -6,8 +6,8 @@
     <title>login</title>
 </head>
 <body>
-    <div id="errMsg">
-        <span style="color: #FF0000" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION ne null} ? ${session.SPRING_SECURITY_LAST_EXCEPTION.message} : 'Error!'"></span>
+    <div th:if="${session.SPRING_SECURITY_LAST_EXCEPTION ne null}">
+        <span style="color: #FF0000" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
     </div>
     <form th:action="@{/login}" method="post">
         邮箱:<input name="txtMail" type="text" />
