@@ -96,6 +96,7 @@
         </dependency>
     </dependencies>
 
+    <!--将应用打成jar包-->
     <build>
         <plugins>
             <plugin>
