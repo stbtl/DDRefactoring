@@ -3,15 +3,15 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title th:text="#{login.title}">login</title>
 </head>
 <body>
     <div th:if="${session.SPRING_SECURITY_LAST_EXCEPTION ne null}">
         <span style="color: #FF0000" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
     </div>
     <form th:action="@{/login}" method="post">
-        邮箱:<input name="txtMail" type="text" />
-        密码:<input name="txtPassword" type="password" />
+        <label th:placeholder="#{login.lblUsername}" th:text="#{login.lblMail}"></label><input name="txtMail" type="text" th:value="admin163.com" />
+        密码:<input name="txtPassword" type="password" th:value="123456" />
         <button type="submit">submit</button>
     </form>
 </body>
