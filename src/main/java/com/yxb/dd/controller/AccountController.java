@@ -1,6 +1,7 @@
 package com.yxb.dd.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,7 +17,7 @@ public class AccountController {
      * 登录
      * @return 登录界面
      */
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }

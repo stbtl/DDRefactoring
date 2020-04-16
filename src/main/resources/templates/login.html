@@ -2,17 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="yxb">
+
     <title th:text="#{login.title}">login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css" th:href="@{bootstrap-3.3.7/css/bootstrap.min.css}">
 </head>
+
 <body>
-    <div th:if="${session.SPRING_SECURITY_LAST_EXCEPTION ne null}">
-        <span style="color: #FF0000" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
-    </div>
-    <form th:action="@{/login}" method="post">
-        <label th:placeholder="#{login.lblUsername}" th:text="#{login.lblMail}"></label><input name="txtMail" type="text" th:value="admin163.com" />
-        密码:<input name="txtPassword" type="password" th:value="123456" />
-        <button type="submit">submit</button>
+<div class="container">
+    <form class="form-signin" th:action="@{/login}" method="post">
+        <p style="color: #FF0000" th:if="${session.SPRING_SECURITY_LAST_EXCEPTION ne null}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></p>
+        <label th:text="#{login.lblMail}" class="sr-only">Email address</label>
+        <input type="email" name="txtMail" class="form-control" placeholder="Email address" th:value="'admin@163.com'" />
+        <label th:text="#{login.lblPassword}" class="sr-only">Password</label>
+        <input type="password" name="txtPassword" class="form-control" placeholder="Password" th:value="123456" />
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{common.btnSubmit}">Sign in</button>
     </form>
+</div>
 </body>
 </html>

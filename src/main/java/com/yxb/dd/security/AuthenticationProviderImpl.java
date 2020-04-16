@@ -2,7 +2,6 @@ package com.yxb.dd.security;
 
 import com.yxb.dd.mapper.AccountMapper;
 import com.yxb.dd.model.dto.UserDTO;
-import com.yxb.dd.service.AccountService;
 import com.yxb.relcommon.security.AES_CBCUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -75,7 +74,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
             throw new BadCredentialsException("邮箱或密码不正确！还可尝试" + (pwdFailCountMax - pwdFailCount) + "次！");
         }
 
-        return new UsernamePasswordAuthenticationToken(userDTO, userDTO.getId(), authentication.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDTO, userDTO.getPassword(), authentication.getAuthorities());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.yxb.dd.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,7 +18,7 @@ public class IndexController {
      * 主页
      * @return 主页界面
      */
-    @RequestMapping("/index")
+    @PostMapping("/index")
     public String index() {
         return "index";
     }
