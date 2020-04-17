@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public UserDTO getUser(BigInteger id) {
+    public UserDTO getUserById(BigInteger id) {
         return accountMapper.selectUserById(id);
     }
 }

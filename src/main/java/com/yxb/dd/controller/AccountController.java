@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.math.BigInteger;
 
 /**
  * 账户处理
@@ -36,7 +39,9 @@ public class AccountController {
     }
 
     @GetMapping(value = "/user/{id}/{operateType}")
-    public String userDetain(String id, String operateType) {
+    public String userDetain(@PathVariable BigInteger id, @PathVariable String operateType, Model model) {
+        model.addAttribute("user", accountService.getUserById(id));
+        model.addAttribute("operateType", operateType);
         return "user_detain";
     }
 }

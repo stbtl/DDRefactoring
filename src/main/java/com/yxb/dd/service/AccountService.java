@@ -15,5 +15,5 @@ public interface AccountService {
 
     public List<UserDTO> getUserList();
 
-    public UserDTO getUser(BigInteger id);
+    public UserDTO getUserById(BigInteger id);
 }
