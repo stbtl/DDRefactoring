@@ -16,6 +16,30 @@
         WHERE mail = #{mail}
     </select>
 
+    <select id="selectUserList" resultType="com.yxb.dd.model.dto.UserDTO">
+        SELECT id,
+                user_name as username,
+                user_role_id as userRoleId,
+                mail,
+                tel,
+                is_locked as locked
+        FROM user
+    </select>
+
+    <select id="selectUserById" resultType="com.yxb.dd.model.dto.UserDTO">
+        SELECT id,
+                user_name as username,
+                password,
+                salt,
+                user_role_id as userRoleId,
+                mail,
+                tel,
+                pwd_fail_count as pwdFailCount,
+                is_locked as locked
+        FROM user
+        WHERE id = #{id}
+    </select>
+
     <update id="updateUserById" parameterType="com.yxb.dd.model.dto.UserDTO">
         UPDATE user
         SET user_name = #{username},

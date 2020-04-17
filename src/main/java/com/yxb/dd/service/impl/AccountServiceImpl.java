@@ -6,6 +6,9 @@ import com.yxb.dd.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+import java.util.List;
+
 /**
  * 账户服务
  *
@@ -15,5 +18,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountServiceImpl implements AccountService {
 
+    @Autowired
+    AccountMapper accountMapper;
 
+    @Override
+    public List<UserDTO> getUserList() {
+        return accountMapper.selectUserList();
+    }
+
+    @Override
+    public UserDTO getUser(BigInteger id) {
+        return accountMapper.selectUserById(id);
+    }
 }

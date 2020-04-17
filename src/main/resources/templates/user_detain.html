@@ -8,10 +8,12 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="yxb">
+
+    <title>用户信息明细</title>
 </head>
 <body>
-    <!--thymeleaf模板-->
-    <div th:fragment="top">template top</div>
-    <div th:fragment="footer">template footer</div>
+
+<div th:insert="~{fragment::top}"></div>
+<div th:insert="~{fragment::footer}"></div>
 </body>
 </html>

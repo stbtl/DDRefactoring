@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="yxb">
+
+    <title>用户列表</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css" th:href="@{bootstrap-3.3.7/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript">
+        function userDetain(id, operateType) {
+            var action = "/user/" + id + "/" + operateType;
+            alert(action);
+            $("#form").attr("action", action).submit();
+        }
+    </script>
+</head>
+<body>
+
+<div th:insert="~{fragment::top}"></div>
+<form id="form" class="form-signin" th:action="@{/user}">
+
+    <p style="color: #FF0000"></p>
+    <label>名称</label>
+    <input type="text" name="txtUsername" class="form-control" />
+    <br/>
+    <button class="btn btn-lg btn-primary" type="button" onclick="">检索</button>
+    <button class="btn btn-lg btn-primary" type="button" onclick="">添加用户</button>
+
+    <table class="table table-striped">
+        <caption>用户信息</caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>邮箱</th>
+                <th>电话</th>
+                <th>状态</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user:${userList}">
+                <td th:text="${user.getUsername()}"></td>
+                <td th:text="${user.getMail()}"></td>
+                <td th:text="${user.getTel()}"></td>
+                <td th:text="${user.getLocked() ? '锁定' : '未锁定'}"></td>
+                <td>
+                    <button class="btn btn-primary" type="button" th:onclick="'userDetain(\''+${user.getId()}+'\',\'edit\')'">编辑</button>
+                    <button class="btn btn-primary" type="button" th:onclick="'userDetain(\''+${user.getId()}+'\',\'readonly\')'">明细</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<div th:insert="~{fragment::footer}"></div>
+</body>
+</html>

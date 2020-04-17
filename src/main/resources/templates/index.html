@@ -10,9 +10,13 @@
     <meta name="author" content="yxb">
 
     <title th:text="#{index.title}">index</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css" th:href="@{bootstrap-3.3.7/css/bootstrap.min.css}">
 </head>
 <body>
     <div th:insert="~{fragment::top}"></div>
+    <a th:href="@{/userList}">用户列表</a>
     <div th:insert="~{fragment::footer}"></div>
 </body>
 </html>

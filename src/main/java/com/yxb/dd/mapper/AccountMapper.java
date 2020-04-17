@@ -3,6 +3,9 @@ package com.yxb.dd.mapper;
 import com.yxb.dd.model.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.math.BigInteger;
+import java.util.List;
+
 /**
  * 账户mapper
  *
@@ -19,6 +22,10 @@ public interface AccountMapper {
      * @return 用户信息
      */
     UserDTO selectUserByMail(String mail);
+
+    List<UserDTO> selectUserList();
+
+    UserDTO selectUserById(BigInteger id);
 
     /**
      * 更新用户信息
