@@ -14,6 +14,17 @@
 
 ### mysql
 
+### restfule风格
+
+以下以员工为例
+
+|      | 请求URI                | 请求方式 |
+| ---- | ---------------------- | -------- |
+| 查询 | user                   | GET      |
+| 添加 | user                   | POST     |
+| 更新 | user/{id} 例如：user/1 | PUT      |
+| 删除 | user/{id} 例如：user/1 | DELETE   |
+
 
 
 
