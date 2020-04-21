@@ -1,6 +1,7 @@
 package com.yxb.dd.service;
 
 import com.yxb.dd.model.dto.UserDTO;
+import com.yxb.dd.model.dto.UserRoleDTO;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -16,4 +17,8 @@ public interface AccountService {
     public List<UserDTO> getUserList();
 
     public UserDTO getUserById(BigInteger id);
+
+    public List<UserRoleDTO> getUserRoleList();
+
+    public int addUser(UserDTO user);
 }

@@ -1,6 +1,7 @@
 package com.yxb.dd.mapper;
 
 import com.yxb.dd.model.dto.UserDTO;
+import com.yxb.dd.model.dto.UserRoleDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.math.BigInteger;
@@ -34,4 +35,8 @@ public interface AccountMapper {
      * @return 更新件数
      */
     int updateUserById(UserDTO userDTO);
+
+    int insertUser(UserDTO userDTO);
+
+    List<UserRoleDTO> selectUserRoleList();
 }

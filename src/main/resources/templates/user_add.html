@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragment::head('员工添加')}">
+</head>
+<body>
+<div th:insert="~{fragment::top}"></div>
+<form th:action="@{/user}" method="post">
+    <div class="form-group">
+        <label>User Name</label>
+        <input name="username" type="text" class="form-control" placeholder="zhangsan">
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input name="password" type="password" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>User Role</label>
+        <select name="userRoleId" class="form-control">
+            <option th:value="${role.id}" th:each="role:${roleList}" th:text="${role.roleName}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Mail</label>
+        <input name="mail" type="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Tel</label>
+        <input name="tel" type="tel" class="form-control">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-sm btn-primary">添加</button>
+    </div>
+</form>
+<div th:insert="~{fragment::footer}"></div>
+</body>
+</html>

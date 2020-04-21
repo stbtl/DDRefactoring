@@ -40,6 +40,11 @@
         WHERE id = #{id}
     </select>
 
+    <insert id="insertUser" parameterType="com.yxb.dd.model.dto.UserDTO">
+        INSERT INTO user(user_name, password, salt, user_role_id, mail, tel)
+        VALUES (#{username}, #{password}, #{salt}, #{userRoleId}, #{mail}, #{tel})
+    </insert>
+
     <update id="updateUserById" parameterType="com.yxb.dd.model.dto.UserDTO">
         UPDATE user
         SET user_name = #{username},
@@ -49,5 +54,11 @@
             is_locked = #{locked}
         WHERE id = #{id}
     </update>
+
+    <select id="selectUserRoleList" resultType="com.yxb.dd.model.dto.UserRoleDTO">
+        SELECT id,
+                role_name as roleName
+        FROM user_role
+    </select>
 
 </mapper>

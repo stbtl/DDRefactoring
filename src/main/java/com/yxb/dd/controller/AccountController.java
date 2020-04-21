@@ -1,11 +1,13 @@
 package com.yxb.dd.controller;
 
+import com.yxb.dd.model.dto.UserDTO;
 import com.yxb.dd.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigInteger;
 
@@ -31,10 +33,24 @@ public class AccountController {
     }
 
     @GetMapping(value = "/userList")
-    public String userList(Model model) {
+    public String toUserListPage(Model model) {
         model.addAttribute("userList", accountService.getUserList());
 
         return "user_list";
+    }
+
+    @GetMapping("/user")
+    public String toAddUserPage(Model model) {
+        model.addAttribute("roleList", accountService.getUserRoleList());
+
+        return "user_add";
+    }
+
+    @PostMapping("/user")
+    public String addUser(UserDTO userDTO) {
+
+
+        return "redirect:/userList";
     }
 
     @GetMapping(value = "/user/{id}/{operateType}")

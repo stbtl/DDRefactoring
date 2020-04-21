@@ -2,6 +2,7 @@ package com.yxb.dd.service.impl;
 
 import com.yxb.dd.mapper.AccountMapper;
 import com.yxb.dd.model.dto.UserDTO;
+import com.yxb.dd.model.dto.UserRoleDTO;
 import com.yxb.dd.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,16 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public UserDTO getUserById(BigInteger id) {
         return accountMapper.selectUserById(id);
+    }
+
+    @Override
+    public List<UserRoleDTO> getUserRoleList() {
+        return accountMapper.selectUserRoleList();
+    }
+
+    @Override
+    public int addUser(UserDTO userDTO) {
+        String salt = "";
+        return accountMapper.insertUser(userDTO);
     }
 }
