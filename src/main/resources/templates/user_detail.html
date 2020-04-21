@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragment::head('用户信息明细')}">
+</head>
+<body>
+
+<div th:insert="~{fragment::top}"></div>
+<div>
+    <ul>
+        <li th:text="${user.getUsername()}"></li>
+        <li th:text="${user.getMail()}"></li>
+        <li th:text="${user.getTel()}"></li>
+        <li th:text="${user.getLocked() ? '锁定' : '未锁定'}"></li>
+    </ul>
+</div>
+<div th:insert="~{fragment::footer}"></div>
+</body>
+</html>
