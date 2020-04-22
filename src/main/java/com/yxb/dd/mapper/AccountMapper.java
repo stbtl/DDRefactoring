@@ -28,15 +28,11 @@ public interface AccountMapper {
 
     UserDTO selectUserById(BigInteger id);
 
-    /**
-     * 更新用户信息
-     *
-     * @param userDTO 用户信息
-     * @return 更新件数
-     */
-    int updateUserById(UserDTO userDTO);
-
     int insertUser(UserDTO userDTO);
 
     List<UserRoleDTO> selectUserRoleList();
+
+    int updateUserForLogin(UserDTO userDTO);
+
+    int updateUserById(UserDTO userDTO);
 }

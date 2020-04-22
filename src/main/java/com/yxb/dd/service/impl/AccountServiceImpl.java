@@ -47,4 +47,9 @@ public class AccountServiceImpl implements AccountService {
         userDTO.setPassword(encodingPwd);
         return accountMapper.insertUser(userDTO);
     }
+
+    @Override
+    public int modUser(UserDTO userDTO) {
+        return accountMapper.updateUserById(userDTO);
+    }
 }

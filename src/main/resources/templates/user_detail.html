@@ -6,6 +6,8 @@
 <body>
 <div th:insert="~{fragment::top}"></div>
 <form th:action="@{/user}" method="post">
+    <input type="hidden" name="_method" th:id="${user!= null}" th:value="put">
+    <input type="hidden" name="id" th:id="${user!= null}" th:value="${user.id}">
     <div class="form-group">
         <label>User Name</label>
         <input name="username" type="text" class="form-control" placeholder="zhangsan" th:value="${user!= null} ? ${user.username}">

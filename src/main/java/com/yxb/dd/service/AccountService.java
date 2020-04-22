@@ -20,5 +20,7 @@ public interface AccountService {
 
     public List<UserRoleDTO> getUserRoleList();
 
-    public int addUser(UserDTO user);
+    public int addUser(UserDTO userDTO);
+
+    public int modUser(UserDTO userDTO);
 }

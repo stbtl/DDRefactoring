@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.math.BigInteger;
 
@@ -59,5 +60,11 @@ public class AccountController {
         model.addAttribute("roleList", accountService.getUserRoleList());
         model.addAttribute("user", accountService.getUserById(id));
         return "user_detail";
+    }
+
+    @PutMapping("/user")
+    public String modUser(UserDTO userDTO) {
+        accountService.modUser(userDTO);
+        return "redirect:/userList";
     }
 }

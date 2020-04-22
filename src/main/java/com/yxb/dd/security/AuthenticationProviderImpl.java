@@ -69,7 +69,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
             } else {
                 userDTO.setPwdFailCount(pwdFailCount);
             }
-            accountMapper.updateUserById(userDTO);
+            accountMapper.updateUserForLogin(userDTO);
 
             throw new BadCredentialsException("邮箱或密码不正确！还可尝试" + (pwdFailCountMax - pwdFailCount) + "次！");
         }
