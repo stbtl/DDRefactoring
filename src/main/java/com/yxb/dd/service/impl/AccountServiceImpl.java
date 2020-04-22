@@ -4,7 +4,9 @@ import com.yxb.dd.mapper.AccountMapper;
 import com.yxb.dd.model.dto.UserDTO;
 import com.yxb.dd.model.dto.UserRoleDTO;
 import com.yxb.dd.service.AccountService;
+import com.yxb.relcommon.security.AES_CBCUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.keygen.KeyGenerators;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -39,7 +41,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public int addUser(UserDTO userDTO) {
-        String salt = "";
+        String salt = KeyGenerators.string().generateKey();
+        String encodingPwd = AES_CBCUtils.encode(userDTO.getPassword(), userDTO.getMail(), salt);
+        userDTO.setSalt(salt);
+        userDTO.setPassword(encodingPwd);
         return accountMapper.insertUser(userDTO);
     }
 }

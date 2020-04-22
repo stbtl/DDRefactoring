@@ -49,6 +49,7 @@ public class AccountController {
     @PostMapping("/user")
     public String addUser(UserDTO userDTO) {
 
+        accountService.addUser(userDTO);
 
         return "redirect:/userList";
     }
