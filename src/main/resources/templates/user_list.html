@@ -17,29 +17,22 @@
                 <th>邮箱</th>
                 <th>电话</th>
                 <th>状态</th>
-                <th></th>
+                <th>操作</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="user:${userList}">
-                <td th:text="${user.getUsername()}"></td>
-                <td th:text="${user.getMail()}"></td>
-                <td th:text="${user.getTel()}"></td>
-                <td th:text="${user.getLocked() ? '锁定' : '未锁定'}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.mail}"></td>
+                <td th:text="${user.tel}"></td>
+                <td th:text="${user.locked ? '锁定' : '未锁定'}"></td>
                 <td>
-                    <button class="btn btn-sm btn-primary" type="button" th:onclick="'userDetain(\''+${user.getId()}+'\',\'edit\')'">编辑</button>
-                    <button class="btn btn-sm btn-primary" type="button" th:onclick="'userDetain(\''+${user.getId()}+'\',\'readonly\')'">明细</button>
+                    <a class="btn btn-sm btn-primary" type="button" th:href="@{/user/} + ${user.id}">编辑</a>
                 </td>
             </tr>
         </tbody>
     </table>
 </form>
 <div th:insert="~{fragment::footer}"></div>
-<script type="text/javascript">
-    function userDetain(id, operateType) {
-        var action = "/user/" + id + "/" + operateType;
-        $("#form").attr("action", action).submit();
-    }
-</script>
 </body>
 </html>

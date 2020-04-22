@@ -43,7 +43,7 @@ public class AccountController {
     public String toAddUserPage(Model model) {
         model.addAttribute("roleList", accountService.getUserRoleList());
 
-        return "user_add";
+        return "user_detail";
     }
 
     @PostMapping("/user")
@@ -54,10 +54,10 @@ public class AccountController {
         return "redirect:/userList";
     }
 
-    @GetMapping(value = "/user/{id}/{operateType}")
-    public String userDetain(@PathVariable BigInteger id, @PathVariable String operateType, Model model) {
+    @GetMapping(value = "/user/{id}")
+    public String toEditUserPage(@PathVariable BigInteger id, Model model) {
+        model.addAttribute("roleList", accountService.getUserRoleList());
         model.addAttribute("user", accountService.getUserById(id));
-        model.addAttribute("operateType", operateType);
         return "user_detail";
     }
 }
