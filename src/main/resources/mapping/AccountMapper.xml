@@ -61,9 +61,6 @@
     <update id="updateUserById" parameterType="com.yxb.dd.model.dto.UserDTO">
         UPDATE user
         SET user_name = #{username},
-        <if test="password != null and password != ''" >
-            password = #{password},
-        </if>
             user_role_id = #{userRoleId},
             tel = #{tel}
         WHERE id = #{id}
