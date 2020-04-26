@@ -27,7 +27,12 @@
                 <td th:text="${user.tel}"></td>
                 <td th:text="${user.locked ? '锁定' : '未锁定'}"></td>
                 <td>
-                    <a class="btn btn-sm btn-primary" type="button" th:href="@{/user/} + ${user.id}">编辑</a>
+                    <a class="btn btn-sm btn-primary" th:href="@{/user/} + ${user.id}">编辑</a>
+                    <form th:action="@{/user/} + ${user.id}" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button class="btn btn-sm btn-danger" type="submit">删除</button>
+                    </form>
+
                 </td>
             </tr>
         </tbody>

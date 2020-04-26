@@ -66,4 +66,9 @@
         WHERE id = #{id}
     </update>
 
+    <delete id="deleteUserById" parameterType="java.math.BigInteger">
+        DELETE FROM user
+        WHERE id = #{id}
+    </delete>
+
 </mapper>

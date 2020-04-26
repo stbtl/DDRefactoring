@@ -35,4 +35,6 @@ public interface AccountMapper {
     int updateUserForLogin(UserDTO userDTO);
 
     int updateUserById(UserDTO userDTO);
+
+    int deleteUserById(BigInteger id);
 }

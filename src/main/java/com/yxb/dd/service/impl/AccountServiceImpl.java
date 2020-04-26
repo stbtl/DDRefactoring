@@ -52,4 +52,9 @@ public class AccountServiceImpl implements AccountService {
     public int modUser(UserDTO userDTO) {
         return accountMapper.updateUserById(userDTO);
     }
+
+    @Override
+    public int deleteUserById(BigInteger id) {
+        return accountMapper.deleteUserById(id);
+    }
 }

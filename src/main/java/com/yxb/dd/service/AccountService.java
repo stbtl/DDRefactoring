@@ -23,4 +23,6 @@ public interface AccountService {
     public int addUser(UserDTO userDTO);
 
     public int modUser(UserDTO userDTO);
+
+    public int deleteUserById(BigInteger id);
 }
