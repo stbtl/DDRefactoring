@@ -6,8 +6,8 @@
 <body>
 
 <div th:insert="~{fragment::top}"></div>
-<form id="form" class="form-signin" th:action="@{/user}">
-
+<form id="form" th:action="@{/user}" method="post">
+    <input type="hidden" name="_method">
     <p style="color: #FF0000"></p>
     <table class="table table-striped">
         <caption><a class="btn btn-sm btn-primary" type="button" th:href="@{/user}">员工添加</a></caption>
@@ -28,16 +28,18 @@
                 <td th:text="${user.locked ? '锁定' : '未锁定'}"></td>
                 <td>
                     <a class="btn btn-sm btn-primary" th:href="@{/user/} + ${user.id}">编辑</a>
-                    <form th:action="@{/user/} + ${user.id}" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button class="btn btn-sm btn-danger" type="submit">删除</button>
-                    </form>
-
+                    <button name="btnDelUser" class="btn btn-sm btn-danger" type="button" th:attr="del_uri=@{/user/} + ${user.id}">删除</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </form>
 <div th:insert="~{fragment::footer}"></div>
+<script type="text/javascript">
+    $("[name=btnDelUser]").click(function() {
+        $("[name=_method]").val("delete");
+        $("#form").attr("action", $(this).attr("del_uri")).submit();
+    });
+</script>
 </body>
 </html>

@@ -68,6 +68,6 @@ public class AccountController {
     @DeleteMapping("/user/{id}")
     public String deleteUser(@PathVariable BigInteger id) {
         accountService.deleteUserById(id);
-        return "redirect:/userList";
+        return "redirect:/userList"; 
     }
 }
