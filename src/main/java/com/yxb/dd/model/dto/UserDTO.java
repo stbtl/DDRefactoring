@@ -39,7 +39,7 @@ public class UserDTO {
     /**
      * 密码输入错误次数
      */
-    private int pwdFailCount;
+    private Integer pwdFailCount;
     /**
      * 是否锁定
      */
@@ -105,11 +105,11 @@ public class UserDTO {
         this.userRoleId = userRoleId;
     }
 
-    public int getPwdFailCount() {
+    public Integer getPwdFailCount() {
         return pwdFailCount;
     }
 
-    public void setPwdFailCount(int pwdFailCount) {
+    public void setPwdFailCount(Integer pwdFailCount) {
         this.pwdFailCount = pwdFailCount;
     }
 
