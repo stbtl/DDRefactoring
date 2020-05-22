@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{fragment::head('员工添加')}">
+<head th:replace="~{fragment::head('员工添加')}">
 </head>
 <body>
 <div th:insert="~{fragment::top}"></div>
@@ -31,7 +31,7 @@
         <input name="tel" type="tel" class="form-control" th:value="${user!= null} ? ${user.tel}">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-sm btn-primary"  th:text="${user!= null} ? 编辑 : 添加">添加</button>
+        <button type="submit" class="btn btn-sm btn-primary"  th:text="${user!= null} ? 更新 : 添加">添加</button>
     </div>
 </form>
 <div th:insert="~{fragment::footer}"></div>
