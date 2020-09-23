@@ -10,11 +10,10 @@ import org.springframework.stereotype.Component;
  * @author YingXB
  * @date 2020/09/23 16:12
  */
-@Component
 public class RedisUtils {
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private static RedisTemplate<String, String> redisTemplate;
 
     /**
      * 读取缓存
@@ -22,7 +21,7 @@ public class RedisUtils {
      * @param key 主键
      * @return 值
      */
-    public String get(String key) {
+    public static String get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
 
@@ -32,8 +31,15 @@ public class RedisUtils {
      * @param key 主键
      * @param value 值
      */
-    public void set(String key, String value) {
-        redisTemplate.opsForValue().set(key, value);
+    public static boolean set(String key, String value) {
+        boolean result = false;
+        try {
+            redisTemplate.opsForValue().set(key, value);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
@@ -42,8 +48,15 @@ public class RedisUtils {
      * @param key 主键
      * @param value 值
      */
-    public void getAndSet(String key, String value) {
-        redisTemplate.opsForValue().getAndSet(key, value);
+    public static boolean getAndSet(String key, String value) {
+        boolean result = false;
+        try {
+            redisTemplate.opsForValue().getAndSet(key, value);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
@@ -51,7 +64,14 @@ public class RedisUtils {
      *
      * @param key 主键
      */
-    public void delete(String key) {
-        redisTemplate.delete(key);
+    public static boolean delete(String key) {
+        boolean result = false;
+        try {
+            redisTemplate.delete(key);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
