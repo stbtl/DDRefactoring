@@ -6,6 +6,7 @@ import com.yxb.dd.model.dto.UserRoleDTO;
 import com.yxb.dd.service.AccountService;
 import com.yxb.relcommon.security.AES_CBCUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.*;
 import org.springframework.security.crypto.keygen.KeyGenerators;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,12 @@ import java.util.List;
  * @date 2020/03/31 9:49
  */
 @Service
+@CacheConfig(cacheNames = "account")
 public class AccountServiceImpl implements AccountService {
+
+    private static final String CONST_CACHENAME_USERLIST = "'CONST_CACHENAME_USERLIST'";
+
+    private static final String CONST_CACHENAME_USERROLELIST = "'CONST_CACHENAME_USERROLELIST'";
 
     /**
      * 数据库Mapper
@@ -32,7 +38,9 @@ public class AccountServiceImpl implements AccountService {
      * @return 用户列表
      */
     @Override
+    @Cacheable(key = CONST_CACHENAME_USERLIST, unless = "#result == null")
     public List<UserDTO> getUserList() {
+        System.out.println("select userList");
         return accountMapper.selectUserList();
     }
 
@@ -42,6 +50,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 用户信息
      */
     @Override
+    @Cacheable(key = "#id")
     public UserDTO getUserById(BigInteger id) {
         return accountMapper.selectUserById(id);
     }
@@ -51,6 +60,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 用户权限列表
      */
     @Override
+    @Cacheable(key = CONST_CACHENAME_USERROLELIST, unless = "#result == null")
     public List<UserRoleDTO> getUserRoleList() {
         return accountMapper.selectUserRoleList();
     }
@@ -61,6 +71,8 @@ public class AccountServiceImpl implements AccountService {
      * @return 添加结果
      */
     @Override
+    @Cacheable(key = "#userDTO.id")
+    @CacheEvict(key = CONST_CACHENAME_USERLIST)
     public int addUser(UserDTO userDTO) {
         String salt = KeyGenerators.string().generateKey();
         String encodingPwd = AES_CBCUtils.encode(userDTO.getPassword(), userDTO.getMail(), salt);
@@ -75,6 +87,8 @@ public class AccountServiceImpl implements AccountService {
      * @return 更新结果
      */
     @Override
+    @CachePut(key = "#userDTO.id")
+    @CacheEvict(key = CONST_CACHENAME_USERLIST)
     public int modUser(UserDTO userDTO) {
         return accountMapper.updateUserById(userDTO);
     }
@@ -85,6 +99,10 @@ public class AccountServiceImpl implements AccountService {
      * @return 删除结果
      */
     @Override
+    @Caching(evict= {
+            @CacheEvict(key = "#id"),
+            @CacheEvict(key = CONST_CACHENAME_USERLIST)
+    })
     public int deleteUserById(BigInteger id) {
         return accountMapper.deleteUserById(id);
     }

@@ -2,6 +2,7 @@ package com.yxb.dd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * 主程序入口
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/03/31 9:49
  */
 @SpringBootApplication
+@EnableCaching
 public class DdRefactoringApplication {
 
     /**

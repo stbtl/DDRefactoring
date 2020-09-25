@@ -1,5 +1,6 @@
 package com.yxb.dd.model.dto;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ import java.util.Date;
  * @author YingXB
  * @date 2020/03/31 9:49
  */
-public class UserRoleDTO {
+public class UserRoleDTO implements Serializable {
 
     private BigInteger id;
     /**
