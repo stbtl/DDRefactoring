@@ -40,7 +40,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Cacheable(key = CONST_CACHENAME_USERLIST, unless = "#result == null")
     public List<UserDTO> getUserList() {
-        System.out.println("select userList");
         return accountMapper.selectUserList();
     }
 
@@ -71,7 +70,7 @@ public class AccountServiceImpl implements AccountService {
      * @return 添加结果
      */
     @Override
-    @Cacheable(key = "#userDTO.id")
+    @CachePut(key = "#userDTO.id")
     @CacheEvict(key = CONST_CACHENAME_USERLIST)
     public int addUser(UserDTO userDTO) {
         String salt = KeyGenerators.string().generateKey();

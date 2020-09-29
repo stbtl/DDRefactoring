@@ -40,7 +40,7 @@
         WHERE id = #{id}
     </select>
 
-    <insert id="insertUser" parameterType="com.yxb.dd.model.dto.UserDTO">
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.yxb.dd.model.dto.UserDTO">
         INSERT INTO user(user_name, password, salt, user_role_id, mail, tel)
         VALUES (#{username}, #{password}, #{salt}, #{userRoleId}, #{mail}, #{tel})
     </insert>
