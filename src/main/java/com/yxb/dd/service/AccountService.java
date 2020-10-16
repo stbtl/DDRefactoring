@@ -38,14 +38,14 @@ public interface AccountService {
      * @param userDTO 用户信息
      * @return 添加结果
      */
-    public int addUser(UserDTO userDTO);
+    public UserDTO addUser(UserDTO userDTO);
 
     /**
      * 更新用户信息
      * @param userDTO 用户信息
      * @return 更新结果
      */
-    public int modUser(UserDTO userDTO);
+    public UserDTO modUser(UserDTO userDTO);
 
     /**
      * 删除用户

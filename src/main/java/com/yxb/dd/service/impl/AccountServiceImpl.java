@@ -72,12 +72,13 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @CachePut(key = "#userDTO.id")
     @CacheEvict(key = CONST_CACHENAME_USERLIST)
-    public int addUser(UserDTO userDTO) {
+    public UserDTO addUser(UserDTO userDTO) {
         String salt = KeyGenerators.string().generateKey();
         String encodingPwd = AES_CBCUtils.encode(userDTO.getPassword(), userDTO.getMail(), salt);
         userDTO.setSalt(salt);
         userDTO.setPassword(encodingPwd);
-        return accountMapper.insertUser(userDTO);
+        int result = accountMapper.insertUser(userDTO);
+        return userDTO;
     }
 
     /**
@@ -88,8 +89,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @CachePut(key = "#userDTO.id")
     @CacheEvict(key = CONST_CACHENAME_USERLIST)
-    public int modUser(UserDTO userDTO) {
-        return accountMapper.updateUserById(userDTO);
+    public UserDTO modUser(UserDTO userDTO) {
+        int result = accountMapper.updateUserById(userDTO);
+        return userDTO;
     }
 
     /**
